@@ -1,0 +1,22 @@
+﻿@model IEnumerable<WineStoreWeb.Models.RUOU>
+@foreach (var ruou in Model)
+{
+<div class="col-1">
+    <div class="col-md-6 col-2">
+        <a href="@Url.Action("Details", "WineStore", new { id = @ruou.MaRuou })">
+            <img src="~/images/@ruou.AnhRuou" class="img-responsive" alt="">
+        </a>
+    </div>
+    <div class="col-md-6 col-p">
+        <h4>Rượu Đức nỗi bậc nhất</h4>
+        <h5 style="color:red">@ruou.TenRuou</h5>
+        <p>
+            @ruou.Mota
+        </p>
+        <a href="@Url.Action("Themgiohang","Giohang"
+                                    ,new {@iMaRuou =@ruou.MaRuou, @strUrl=Request.Url.ToString()})" class="shop" data-hover="Shop Now">Shop Now</a>
+
+    </div>
+    <div class="clearfix"> </div>
+</div>
+}

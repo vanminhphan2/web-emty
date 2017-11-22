@@ -1,0 +1,39 @@
+﻿@using WineStoreWeb.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<RUOU>
+@{
+    ViewBag.Title = "LayruoutheonuocNK";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<div>
+    <div style="width:100%;float:left">
+        @foreach (var ruou in Model)
+        {
+            <div class="col-sm-4 col-md-4 col col-md-4" style="width:33.3%;float:left">
+                <div class="thumbnail">
+                    <a href="@Url.Action("Details","WineStore", new {id= ruou.MaRuou})">
+                        <img alt="@ruou.TenRuou" src="~/images/@ruou.AnhRuou" width="200" />
+                        <div>
+                            <br />
+                            <h4 style="text-align:center">
+                                @ruou.TenRuou
+                            </h4>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+    <div>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+        <div class="MenuTrang">
+            @Html.PagedListPager(Model, page => Url.Action("LayruoutheonuocNK", new { page = page }))
+        </div>
+        <style>
+            .MenuTrang li {
+                display: inline;
+            }
+        </style>
+    </div>
+</div>
