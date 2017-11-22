@@ -1,0 +1,123 @@
+﻿@model WineStoreWeb.Models.RUOU
+
+@{
+    ViewBag.Title = "ThemRuoumoi";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 style="text-align:center; color:blue">Thêm rượu mới</h2>
+
+@using (Html.BeginForm("ThemRuoumoi","Admin",FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div style="width:90%;float:right">
+                <div style="width:10%;float:left;font-family:sans-serif;font-weight:700">Tên rượu :</div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TenRuou, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TenRuou, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div style="width:90%;float:right">
+                <div style="width:10%;float:left;font-family:sans-serif;font-weight:700">Giá bán :</div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Giaban, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Giaban, "", new { @class = "text-danger" })
+                </div>
+            </div>
+         </div>
+
+        <div class="form-group">
+            <div style="width:90%;float:right">
+                <div style="width:10%;float:left;font-family:sans-serif;font-weight:700">Mô tả :</div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Mota, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Mota, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            </div>
+
+        <div class="form-group">
+            <div style="width:90%;float:right">
+                <div style="width:10%;float:left;font-family:sans-serif;font-weight:700">Ảnh rượu :</div>
+            <div class="col-md-10">
+               <input type="file"name="fileUpload"/>
+                @ViewBag.Thongbao
+            </div>
+        </div>
+            </div>
+
+        <div class="form-group">
+            <div style="width:90%;float:right">
+                <div style="width:10%;float:left;font-family:sans-serif;font-weight:700">Ngày cập nhật :</div>
+                <div class="col-md-10">
+                    <input type="date" name="Ngaycapnhat" />
+                    @Html.ValidationMessageFor(model => model.Ngaycapnhat, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            </div>
+
+        <div class="form-group">
+            <div style="width:90%;float:right">
+                <div style="width:10%;float:left;font-family:sans-serif;font-weight:700">Số lượng tồn :</div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Soluongton, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Soluongton, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            </div>
+
+        <div class="form-group">
+            <div style="width:90%;float:right">
+                <div style="width:10%;float:left;font-family:sans-serif;font-weight:700">Loại rượu :</div>
+                <div class="col-md-10">
+                    @Html.DropDownList("MaLoaiRuou")
+                </div>
+            </div>
+            </div>
+
+        <div class="form-group">
+            <div style="width:90%;float:right">
+                <div style="width:10%;float:left;font-family:sans-serif;font-weight:700">Nhà sản xuất :</div>
+                <div class="col-md-10">
+                    @Html.DropDownList("MaNSX")
+                </div>
+            </div>
+            </div>
+
+        <div class="form-group">
+            <div style="width:90%;float:right">
+                <div style="width:10%;float:left;font-family:sans-serif;font-weight:700">Nước nhập khẩu :</div>
+                <div class="col-md-10">
+                    @Html.DropDownList("MaNNK")
+                </div>
+            </div>
+            </div>
+        <div class="form-group">
+            <div style="width:90%;float:right">
+                <div style="width:10%;float:left;font-family:sans-serif;font-weight:700">VIP :</div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Vip, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Vip, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm mới" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Về trang quản lí rượu", "Ruou")
+</div>
