@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WineStoreWeb.Models.RUOU>
+
+
+    @foreach (var ruou in Model)
+    {
+        <div class="col-sm-4 item-grid simpleCart_shelfItem">
+            <div class="grid-pro">
+                <div class=" grid-product ">
+                    <figure>
+                        <a href="@Url.Action("Details", "WineStore", new { id =@ruou.MaRuou })">
+                            <div class="grid-img">
+                                <img src="~/images/@ruou.AnhRuou" class="img-responsive" alt="">
+                            </div>
+                            <div class="grid-img">
+                                <img src="~/images//@ruou.AnhRuou" class="img-responsive" alt="">
+                            </div>
+                        </a>
+                    </figure>
+                </div>
+                <div class="women">
+                    <a href="@Url.Action("Details", "WineStore", new { id =@ruou.MaRuou })"><img src="~/images/ll.png" alt=""></a>
+                    <h6 style="height:36px"><a href="@Url.Action("Details", "WineStore", new { id = @ruou.MaRuou })">@ruou.TenRuou</a></h6>
+                    <p><em class="item_price">@ruou.Giaban VNĐ</em></p>
+                    <a href="@Url.Action("Themgiohang","Giohang"
+                                    ,new {@iMaRuou =@ruou.MaRuou, @strUrl=Request.Url.ToString()})" data-text="Thêm giỏ hàng" class="but-hover1 item_add">Thêm giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+
+
+
+
+
+
+
+

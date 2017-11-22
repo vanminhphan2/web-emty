@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- for-mobile-apps -->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="WineStore, wine shop, emty shop" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <!-- //js -->
+    <!-- cart -->
+    <script src="~/Scripts/simpleCart.min.js"></script>
+    <!-- cart -->
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src="~/Scripts/bootstrap-3.1.1.min.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- animation-effect -->
+    <link href="~/css/animate.min.css" rel="stylesheet">
+    <script src="~/Scripts/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+    <!-- //animation-effect -->
+    <link href='//fonts.googleapis.com/css?family=Cabin:400,500,600,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    @{
+        var sesscion = (WineStoreWeb.Models.KHACHHANG)Session["Taikhoan"];
+    }
+    @{
+        var sesscion2 = (WineStoreWeb.Models.TAIKHOANADMIN)Session["TaikhoanAdmin"];
+    }
+    <div class="header">
+        <div class="header-grid">
+            <div class="container">
+                <div class="header-left animated wow fadeInLeft" data-wow-delay=".5s">
+                    @if (sesscion2 != null)
+                    {
+                        <ul>
+                            <li>@Html.ActionLink("Quản lí rượu", "Ruou", "Admin")</li>
+                            <li>@Html.ActionLink("Quản lí nhà sản xuất rượu", "Dangxuat", "Admin")</li>
+                            <li>@Html.ActionLink("Quản lí nước nhập khẩu", "Dangxuat", "Admin")</li>
+                        </ul>
+                    }
+                    else
+                    {
+                    <ul>
+                        <li><i class="glyphicon glyphicon-headphones"></i><a href="#">Hỗ trợ 24/7</a></li>
+                        <li><i class="glyphicon glyphicon-envelope"></i><a href="mailto:EmTyShop@gmail.com">EmTyShop@gmail.com</a></li>
+                        <li><i class="glyphicon glyphicon-earphone"></i>0963 389 695</li>
+
+                    </ul>
+                    }
+                </div>
+                <div class="header-right animated wow fadeInRight" data-wow-delay=".5s" style="width:45%">
+                    <div class="header-right1 ">
+                        
+                        @if (sesscion == null&&sesscion2==null)
+                        {
+                            <ul>
+                                <li><i class="glyphicon glyphicon-book"></i><a href="@Url.Action("Dangky","Nguoidung")">Đăng kí</a></li>
+                                <li><i class="glyphicon glyphicon-log-in"></i><a href="@Url.Action("Dangnhap","Nguoidung")">Đăng nhập</a></li>
+                                <li><i class="glyphicon glyphicon-log-in"></i><a href="@Url.Action("Login","Admin")">Đăng nhập quản trị</a></li>
+                            </ul>
+                        }
+                        else
+                        if(sesscion!=null)
+                        {
+                            <ul>
+                                <li>Xin chào: @sesscion.HoTen</li>
+
+                                <li>@Html.ActionLink("Thoát","Dangxuat","Nguoidung")</li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul>
+                                <li>Xin chào Admin : @sesscion2.HotenAdmin</li>
+
+                                <li>@Html.ActionLink("Thoát", "Dangxuat", "Admin")</li>
+                            </ul>
+                        }
+
+
+                    </div>
+                    @if (sesscion2 == null)
+                    {
+                    <div class="header-right2">
+                        <div class="cart box_1" style="margin-top:6px">
+                           @Html.Action("GiohangPartial", "Giohang")
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                    }
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="logo-nav">
+
+                <nav class="navbar navbar-default">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header nav_2">
+                        <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="navbar-brand logo-nav-left ">
+                            <h1 class="animated wow pulse" data-wow-delay=".5s"><a href="@Url.Action("Index","WineStore")">Wine<span> Store</span></a></h1>
+                        </div>
+
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="@Url.Action("Index","WineStore")" class="act">Trang chủ</a></li>
+                            <!-- Mega Menu -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Loại Rượu<b class="caret"></b></a>
+                                <ul class="dropdown-menu multi">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>Rượu Ngoại</h6>
+                                                @Html.Action("NuocNK", "WineStore")
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <h6>Rượu nội</h6>
+                                                @Html.Action("Ruounoi", "WineStore")
+                                               
+                                            </ul>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li><a href="@Url.Action("Index","Contact")" class="act">Liên hệ</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+     @*header*@ 
+    
+    <div style="width:100%">
+        @using (Html.BeginForm("search", "WineStore", FormMethod.Post))
+        {
+            <div>
+                <label style="width:60%;float:left;text-align:right">Tìm kiếm theo tên rượu  </label>
+                <div style="width:40%;float:left">@Html.TextBox("searchtext", "")</div>
+            </div>
+        }
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <div id="fb-root"></div>
+    <script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=1754423674862351';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <div class="social animated wow fadeInDown" data-wow-delay=".1s">
+        <div class="container">
+            <div class="col-sm-3 social-ic">
+                <a href="https://www.facebook.com/profile.php?id=100005488605922">FACEBOOK</a>
+            </div>
+            <div class="col-sm-3 social-ic">
+                <a href="https://www.facebook.com/profile.php?id=100005488605922">TWITTER</a>
+            </div>
+            <div class="col-sm-3 social-ic">
+                <a href="https://www.facebook.com/profile.php?id=100005488605922">GOOGLE+</a>
+            </div>
+            <div class="col-sm-3 social-ic">
+                <a href="https://www.facebook.com/profile.php?id=100005488605922">PINTEREST</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="col-md-9 footer-top1">
+                    <h4>Cửa hàng EmTy chúng tôi chuyên cung cấp các loại rựu ngoại</h4>
+                    
+                </div>
+                <div class="col-md-3 footer-top2">
+                    <a href="@Url.Action("Index","Contact")" class="act">Liên hệ ngay</a>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="footer-grids">
+                <div class="col-md-4 footer-grid animated wow fadeInLeft" data-wow-delay=".5s">
+                    <h3>Giới thiệu</h3>
+                    <p>
+                       Cửa hàng được hình thành năm 2009<span>
+                            Nổi tiếng với các loại rượu trong và ngoài nước
+                            Rượu chính hãng, đảm bảo chất lượng
+                        </span>
+                    </p>
+                </div>
+                <div class="col-md-4 footer-grid animated wow fadeInLeft" data-wow-delay=".6s">
+                    <h3>Thông tin liên hệ</h3>
+                    <ul>
+                        <li><i class="glyphicon glyphicon-map-marker"></i>793, Trần Xuân Soạn, Tân Hưng <span>Quận 7, tp.HCM</span></li>
+                        <li class="foot-mid"><i class="glyphicon glyphicon-envelope"></i><a href="mailto:EmTyShop@gmail.com">EmTyShop@gmail.com</a></li>
+                        <li><i class="glyphicon glyphicon-earphone"></i>0963 389 695</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 footer-grid animated wow fadeInLeft" data-wow-delay=".7s">
+                    <h3>Đăng kí để cập nhật thông tin về rượu mới</h3>
+                    <form>
+                        <input type="text" placeholder="Email" required="">
+                        <input type="submit" value="Đăng kí">
+                    </form>
+
+                </div>
+
+                <div class="clearfix"> </div>
+            </div>
+
+            <div class="copy-right animated wow fadeInUp" data-wow-delay=".5s">
+                <p> Website được thiết kế bởi <a href="http://EmTyTeam.com/">EmTyTeam</a> | &copy 2017</p>
+            </div>
+        </div>
+    </div>
+    <!-- //footer -->
+</body>
+</html>
