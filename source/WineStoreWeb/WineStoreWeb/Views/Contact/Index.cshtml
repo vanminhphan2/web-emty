@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+<!--banner-->
+<div class="banner-top">
+    <div class="container">
+        <h2 style="color:deepskyblue" class="animated wow fadeInLeft" data-wow-delay=".5s">Liên hệ</h2>
+        <h3 style="color:deepskyblue;color:red" class="animated wow fadeInRight" data-wow-delay=".5s"><a href="@Url.Action("Index","WineStore")">Trang chủ</a><label>/</label>Liên hệ</h3>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<!-- contact -->
+<div class="contact">
+    <div class="container">
+
+
+        <div class="col-md-8 contact-grids1 animated wow fadeInRight" data-wow-delay=".5s">
+            <form>
+                <div class="contact-form2">
+                    <h4>Name</h4>
+
+                    <input type="text" placeholder="" required="">
+
+                </div>
+                <div class="contact-form2">
+                    <h4>Website</h4>
+
+                    <input type="text" placeholder="" required="">
+
+                </div>
+
+                <div class="contact-form2">
+                    <h4>Email</h4>
+
+                    <input type="email" placeholder="" required="">
+
+                </div>
+                <div class="contact-form2">
+                    <h4>Subject</h4>
+
+                    <input type="text" placeholder="" required="">
+
+                </div>
+
+
+                <div class="contact-me ">
+                    <h4>Message</h4>
+
+                    <textarea type="text" placeholder="" required=""> </textarea>
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+
+        </div>
+
+        <div class="col-md-4 contact-grids">
+            <div class=" contact-grid animated wow fadeInLeft" data-wow-delay=".5s">
+                <div class="contact-grid1">
+                    <div class="contact-grid2 ">
+                        <i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>
+                    </div>
+                    <div class="contact-grid3">
+                        <h4>Địa chỉ</h4>
+                        <p>793/29 Trần Xuân Soạn, Tân hưng, Quận 7<span>Thành phố Hồ Chí Minh</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class=" contact-grid animated wow fadeInUp" data-wow-delay=".5s">
+                <div class="contact-grid1">
+                    <div class="contact-grid2 contact-grid4">
+                        <i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>
+                    </div>
+                    <div class="contact-grid3">
+                        <h4>Số điện thoại liên hệ</h4>
+                        <p>0963389695<span>01692539209</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class=" contact-grid animated wow fadeInRight" data-wow-delay=".5s">
+                <div class="contact-grid1">
+                    <div class="contact-grid2 contact-grid5">
+                        <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
+                    </div>
+                    <div class="contact-grid3">
+                        <h4>Email</h4>
+                        <p><a href="contactto:Emty@gmail.com">Emty@gmail.com</a><span><a href="contactto:vanminhphan2@gmail.com">vanminhphan2@gmail.com</a></span></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.77602910967!2d106.70003281418242!3d10.75173726259039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f7370fbd4dd%3A0xc27fd8ec163e7d96!2zNzkzIFRy4bqnbiBYdcOibiBTb-G6oW4sIFTDom4gSMawbmcsIFF14bqtbiA3LCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1508664933368" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
+<!-- //contact -->

@@ -1,0 +1,103 @@
+﻿@using WineStoreWeb.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<WineStoreWeb.Models.RUOU>
+@helper Truncate(string input, int lenght)
+    {
+if(input.Length<lenght)
+{
+        @input
+}
+else { @input.Substring(0,lenght)<text>...</text>}
+    }
+@{
+    ViewBag.Title = "Ruou";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 style="color:blue;text-align:center">Quản lí thông tin rượu</h2>
+
+<h3>
+    <a href="@Url.Action("ThemRuoumoi","Admin")">Nhập thêm rượu
+    
+    </a>
+
+</h3>
+<table class="table"border="1">
+    <tr>
+        <th style="width:200px">
+           Tên rượu
+        </th>
+        <th style="width:200px">
+            Giá bán
+        </th>
+        <th style="width:200px">
+            Mô tả
+        </th>
+        <th style="width:200px">
+            Ảnh rượu
+        </th>
+        <th style="width:200px">
+            Ngày cập nhật
+        </th>
+        <th style="width:200px">
+            Số lượng tồn
+        </th>
+        <th style="width:200px">
+           Tên loại rượu
+        </th>
+        <th style="width:200px">
+            Tên nước nhập khẩu
+        </th>
+        <th style="width:200px">
+            Nhà xuất bản
+        </th>
+        <th style="width:300px"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenRuou)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Giaban)
+        </td>
+        <td>
+            @Truncate(item.Mota,50)
+        </td>
+        <td>
+            <img src="@Url.Content("~/images/"+item.AnhRuou)"style="width:150px"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngaycapnhat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soluongton)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LOAIRUOU.TenLoaiRuou)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NUOCNHAPKHAU.TenNNK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NHASANXUAT.TenNSX)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Suaruou", new { id=item.MaRuou }) |
+            @Html.ActionLink("Chi tiết", "Chitietruou", new { id=item.MaRuou }) |
+            @Html.ActionLink("Xóa", "Xoaruou", new { id=item.MaRuou })
+        </td>
+    </tr>
+}
+
+</table>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Ruou", new { page = page }))
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>
