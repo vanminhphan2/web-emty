@@ -1,0 +1,95 @@
+﻿@model WineStoreWeb.Models.RUOU
+
+@{
+    ViewBag.Title = "Xoaruou";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 style="text-align:center;color:red">Xác nhận thông tin cần xóa</h2>
+
+<h3>Bạn có chắc xóa rượu này không?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên rượu:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenRuou)
+        </dd>
+
+        <dt>
+            Giá bán:
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.Giaban) VNĐ
+        </dd>
+
+        <dt>
+            Mô tả:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+
+        <dt>
+            Ảnh rượu:
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/images/"+Model.AnhRuou)" width="120px" />
+        </dd>
+
+        <dt>
+            Ngày cập nhật:
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/MM/yyyy}", Model.Ngaycapnhat)
+        </dd>
+
+        <dt>
+            Số lượng tồn:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluongton)
+        </dd>
+
+        <dt>
+            Loại rượu:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOAIRUOU.TenLoaiRuou)
+        </dd>
+
+        <dt>
+            Nước nhập khẩu:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NUOCNHAPKHAU.TenNNK)
+        </dd>
+
+        <dt>
+            Nhà sản xuất:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHASANXUAT.TenNSX)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở lại", "Ruou")
+        </div>
+    }
+</div>

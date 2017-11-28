@@ -1,0 +1,12 @@
+﻿@model IEnumerable<WineStoreWeb.Models.NUOCNHAPKHAU>
+<div class="list-group">
+    @foreach (var item in Model)
+    {
+        <li>
+        <a href="@Url.Action("LayruoutheonuocNK","WineStore", new {id= item.MaNNK})">
+            @item.TenNNK
+        </a>
+        </li>
+        }
+    </div>
+

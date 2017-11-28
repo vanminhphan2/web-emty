@@ -1,0 +1,13 @@
+﻿@model IEnumerable<WineStoreWeb.Models.RUOU>
+
+@foreach (var ruou in Model)
+{
+    <div class="item">
+
+        <a href="@Url.Action("Details", "WineStore", new { id = @ruou.MaRuou })"><img class="img-responsive" src="~/images/@ruou.AnhRuou" alt="" /></a>
+        <a href="@Url.Action("Themgiohang","Giohang"
+                                    ,new {@iMaRuou =@ruou.MaRuou, @strUrl=Request.Url.ToString()})" class="shop-2">Shop Now</a>
+
+    </div>
+
+}

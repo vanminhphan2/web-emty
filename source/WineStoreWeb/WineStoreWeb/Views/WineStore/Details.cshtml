@@ -1,0 +1,37 @@
+﻿<style type="text/css">
+    #Datmua a{
+        clear : both; background-color:red;
+        color:white; width:120px; height:35px;
+        display:block; float:right; text-align:center;
+        padding-top:10px; text-decoration:none; font-weight:bold;
+    }
+    #Datmua a:hover{
+        background-color:gray;
+        color:red;
+    }
+</style>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<h2 style="text-align:center; width:100%">Thông tin chi tiết rượu</h2>
+<div style="height:300px" >
+  <div style="width:80%;float:right">
+    <div style="float:left">
+        <img src="~/images/@Model.AnhRuou" />
+    </div>
+
+    <div style="width:40%; float:left;padding:10px" />
+    <h4 style="font-weight:bold; color:red;">Tên Rượu: @Model.TenRuou</h4>
+       <p style="text-align:justify"><span style="font-weight:bold">Mô tả: </span>@Model.Mota </p>
+    <p style="font-weight:bold">Giá bán: <span style="color:red; font-size: 16pt">@Model.Giaban VNĐ</span></p>
+    <div id="Datmua" style="float:left; margin:10px">
+        <a href="@Url.Action("Themgiohang","Giohang",new {@iMaRuou =@Model.MaRuou, @strUrl=Request.Url.ToString()})">
+            Đặt mua
+        </a>
+    </div>
+    </div>
+    </div>
+</div>
+
+
