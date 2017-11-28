@@ -1,0 +1,51 @@
+﻿@model WineStoreWeb.Models.NHASANXUAT
+
+@{
+    ViewBag.Title = "ChitietNSX";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>Chi Tiết Nhà Sản Xuất</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Nhà Sản Xuất :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNSX)
+        </dd>
+
+        <dt>
+           Địa Chỉ :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diachi)
+        </dd>
+
+        <dt>
+         Lời Giới Thiệu :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Loigioithieu)
+        </dd>
+
+        <dt>
+         Điện Thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dienthoai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaNSX }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WineStoreWeb.Models.NHASANXUAT>
+
+@{
+    ViewBag.Title = "NhaSanXuat";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<h2 style="color:blue;text-align:center">Quản lí thông tin nhà sản xuất</h2>
+<p>
+    @Html.ActionLink("Thêm Nhà Sản Xuất", "Create")
+</p>
+<table class="table" border="1">
+    <tr>
+        <th style="width:200px">
+            Tên Nhà Sản Xuất
+        </th>
+        <th style="width:200px">
+            Địa Chỉ
+        </th>
+        <th style="width:200px">
+            Lời Giới Thiệu
+        </th>
+        <th style="width:200px">
+            Số Điện Thoại
+        </th>
+        <th style="width:300px"></th>
+    </tr>
+@foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNSX)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diachi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Loigioithieu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dienthoai)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Sửa Nhà Sản Xuất", new { id = item.MaNSX }) |
+                    @Html.ActionLink("Chi Tiết", "ChitietNSX", new { id = item.MaNSX }) |
+                    @Html.ActionLink("Xóa", "XoaNSX", new { id = item.MaNSX })
+                </td>
+            </tr>
+        }
+
+    </table>
