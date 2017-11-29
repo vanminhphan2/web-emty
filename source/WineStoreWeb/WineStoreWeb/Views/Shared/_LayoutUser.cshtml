@@ -51,7 +51,7 @@
                     {
                         <ul>
                             <li>@Html.ActionLink("Quản lí rượu", "Ruou", "Admin")</li>
-                            <li>@Html.ActionLink("Quản lí nhà sản xuất rượu", "NhaSanXuat", "Admin")</li>
+                            <li>@Html.ActionLink("Quản lí nhà sản xuất rượu", "Dangxuat", "Admin")</li>
                             <li>@Html.ActionLink("Quản lí nước nhập khẩu", "Dangxuat", "Admin")</li>
                         </ul>
                     }
@@ -162,7 +162,7 @@
     </div>
      @*header*@ 
     
-    <div style="width:100%">
+   @*<div style="width:100%">
         @using (Html.BeginForm("search", "WineStore", FormMethod.Post))
         {
             <div>
@@ -170,7 +170,7 @@
                 <div style="width:40%;float:left">@Html.TextBox("searchtext", "")</div>
             </div>
         }
-    </div>
+    </div>*@
     <div>
         @RenderBody()
     </div>

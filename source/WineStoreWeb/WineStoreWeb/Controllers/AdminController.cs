@@ -66,12 +66,6 @@ namespace WineStoreWeb.Controllers
             int pagesize = 10;
             return View(data.RUOUs.ToList().OrderBy(n=>n.MaRuou).ToPagedList(pagenumber,pagesize));
         }
-        public ActionResult NhaSanXuat(int? page)
-        {
-            int pagenumber = (page ?? 1);
-            int pagesize = 10;
-            return View(data.NHASANXUATs.ToList().OrderBy(n => n.MaNSX).ToPagedList(pagenumber, pagesize));
-        }
         [HttpGet]
         public ActionResult ThemRuoumoi()
         {
@@ -130,46 +124,6 @@ namespace WineStoreWeb.Controllers
 
             }
             return View(ruou);
-        }
-        public ActionResult ChitietNSX(int id)
-        {
-            NHASANXUAT NSX = data.NHASANXUATs.SingleOrDefault(n => n.MaNSX == id);
-            ViewBag.MaNSX = NSX.MaNSX;
-            if (NSX == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-
-            }
-            return View(NSX);
-        }
-        [HttpGet]
-        public ActionResult XoaNSX(int id)
-        {
-            NHASANXUAT NSX = data.NHASANXUATs.SingleOrDefault(n => n.MaNSX == id);
-            ViewBag.Maruou = NSX.MaNSX;
-            if (NSX == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-
-            }
-            return View(NSX);
-        }
-        [HttpPost, ActionName("Xoaruou")]
-        public ActionResult XacnhanxoaNSX(int id)
-        {
-            NHASANXUAT NSX = data.NHASANXUATs.SingleOrDefault(n => n.MaNSX == id);
-            ViewBag.Maruou = NSX.MaNSX;
-            if (NSX == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-
-            }
-            data.NHASANXUATs.DeleteOnSubmit(NSX);
-            data.SubmitChanges();
-            return RedirectToAction("NSX");
         }
         [HttpGet]
         public ActionResult Xoaruou(int id)
@@ -244,13 +198,11 @@ namespace WineStoreWeb.Controllers
                 }
                 ruou.AnhRuou = fileName;
                 
-               UpdateModel(ruou);
+                UpdateModel(ruou);
                 data.SubmitChanges();
             }
-
-            return RedirectToAction("Ruou");
+                return RedirectToAction("Ruou");
+            }
         }
-    }
-
     }
 }
