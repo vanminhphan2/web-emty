@@ -198,13 +198,20 @@ namespace WineStoreWeb.Controllers
                 }
                 ruou.AnhRuou = fileName;
                 
-               UpdateModel(ruou);
+                UpdateModel(ruou);
                 data.SubmitChanges();
             }
-
-            return RedirectToAction("Ruou");
+                return RedirectToAction("Ruou");
+            }
         }
-    }
 
+
+        //Nuoc giai khat
+        public ActionResult NuocNhapKhau(int ? page)
+        {
+            int pagenumber = (page ?? 1);
+            int pagesize = 10;
+            return View(data.NUOCNHAPKHAUs.ToList().OrderBy(n => n.MaNNK).ToPagedList(pagenumber, pagesize));
+        }
     }
 }
