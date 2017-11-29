@@ -204,14 +204,5 @@ namespace WineStoreWeb.Controllers
                 return RedirectToAction("Ruou");
             }
         }
-
-
-        //Nuoc giai khat
-        public ActionResult NuocNhapKhau(int ? page)
-        {
-            int pagenumber = (page ?? 1);
-            int pagesize = 10;
-            return View(data.NUOCNHAPKHAUs.ToList().OrderBy(n => n.MaNNK).ToPagedList(pagenumber, pagesize));
-        }
     }
 }
