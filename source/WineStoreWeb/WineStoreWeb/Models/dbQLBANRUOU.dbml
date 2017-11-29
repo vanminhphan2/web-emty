@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLBANRUOU" Class="dbQLBANRUOUDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-DC0QH00\SQLEXPRESS;Initial Catalog=QLBANRUOU;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QLBANRUOUConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-DII1BSM\SQLEXPRESS;Initial Catalog=QLBANRUOU;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QLBANRUOUConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TAIKHOANADMIN" Member="TAIKHOANADMINs">
+    <Type Name="TAIKHOANADMIN">
+      <Column Name="Tentaikhoan" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Matkhau" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HotenAdmin" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.CHITIETDONTHANG" Member="CHITIETDONTHANGs">
     <Type Name="CHITIETDONTHANG">
       <Column Name="MaDonHang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -8,13 +15,6 @@
       <Column Name="Dongia" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Association Name="DONDATHANG_CHITIETDONTHANG" Member="DONDATHANG" ThisKey="MaDonHang" OtherKey="MaDonHang" Type="DONDATHANG" IsForeignKey="true" />
       <Association Name="RUOU_CHITIETDONTHANG" Member="RUOU" ThisKey="MaRuou" OtherKey="MaRuou" Type="RUOU" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TAIKHOANADMIN" Member="TAIKHOANADMINs">
-    <Type Name="TAIKHOANADMIN">
-      <Column Name="Tentaikhoan" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Matkhau" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="HotenAdmin" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.DONDATHANG" Member="DONDATHANGs">
@@ -49,13 +49,6 @@
       <Association Name="LOAIRUOU_RUOU" Member="RUOUs" ThisKey="MaLoaiRuou" OtherKey="MaLoaiRuou" Type="RUOU" />
     </Type>
   </Table>
-  <Table Name="dbo.NUOCNHAPKHAU" Member="NUOCNHAPKHAUs">
-    <Type Name="NUOCNHAPKHAU">
-      <Column Name="MaNNK" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TenNNK" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="NUOCNHAPKHAU_RUOU" Member="RUOUs" ThisKey="MaNNK" OtherKey="MaNNK" Type="RUOU" />
-    </Type>
-  </Table>
   <Table Name="dbo.NHASANXUAT" Member="NHASANXUATs">
     <Type Name="NHASANXUAT">
       <Column Name="MaNSX" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -64,6 +57,13 @@
       <Column Name="Loigioithieu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Dienthoai" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="NHASANXUAT_RUOU" Member="RUOUs" ThisKey="MaNSX" OtherKey="MaNSX" Type="RUOU" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NUOCNHAPKHAU" Member="NUOCNHAPKHAUs">
+    <Type Name="NUOCNHAPKHAU">
+      <Column Name="MaNNK" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenNNK" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="NUOCNHAPKHAU_RUOU" Member="RUOUs" ThisKey="MaNNK" OtherKey="MaNNK" Type="RUOU" />
     </Type>
   </Table>
   <Table Name="dbo.RUOU" Member="RUOUs">
@@ -81,8 +81,8 @@
       <Column Name="Vip" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="RUOU_CHITIETDONTHANG" Member="CHITIETDONTHANGs" ThisKey="MaRuou" OtherKey="MaRuou" Type="CHITIETDONTHANG" />
       <Association Name="LOAIRUOU_RUOU" Member="LOAIRUOU" ThisKey="MaLoaiRuou" OtherKey="MaLoaiRuou" Type="LOAIRUOU" IsForeignKey="true" />
-      <Association Name="NUOCNHAPKHAU_RUOU" Member="NUOCNHAPKHAU" ThisKey="MaNNK" OtherKey="MaNNK" Type="NUOCNHAPKHAU" IsForeignKey="true" />
       <Association Name="NHASANXUAT_RUOU" Member="NHASANXUAT" ThisKey="MaNSX" OtherKey="MaNSX" Type="NHASANXUAT" IsForeignKey="true" />
+      <Association Name="NUOCNHAPKHAU_RUOU" Member="NUOCNHAPKHAU" ThisKey="MaNNK" OtherKey="MaNNK" Type="NUOCNHAPKHAU" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

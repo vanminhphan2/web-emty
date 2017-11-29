@@ -66,6 +66,13 @@ namespace WineStoreWeb.Controllers
             int pagesize = 10;
             return View(data.RUOUs.ToList().OrderBy(n=>n.MaRuou).ToPagedList(pagenumber,pagesize));
         }
+
+        public ActionResult NuocNhapKhau()
+        {
+            //int pagenumber = (page ?? 1);
+            //int pagesize = 10;
+            return View(data.NUOCNHAPKHAUs.ToList());//.OrderBy(n => n.MaRuou).ToPagedList(pagenumber, pagesize));
+        }
         [HttpGet]
         public ActionResult ThemRuoumoi()
         {

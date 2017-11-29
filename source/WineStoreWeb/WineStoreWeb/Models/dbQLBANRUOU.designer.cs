@@ -30,12 +30,12 @@ namespace WineStoreWeb.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertCHITIETDONTHANG(CHITIETDONTHANG instance);
-    partial void UpdateCHITIETDONTHANG(CHITIETDONTHANG instance);
-    partial void DeleteCHITIETDONTHANG(CHITIETDONTHANG instance);
     partial void InsertTAIKHOANADMIN(TAIKHOANADMIN instance);
     partial void UpdateTAIKHOANADMIN(TAIKHOANADMIN instance);
     partial void DeleteTAIKHOANADMIN(TAIKHOANADMIN instance);
+    partial void InsertCHITIETDONTHANG(CHITIETDONTHANG instance);
+    partial void UpdateCHITIETDONTHANG(CHITIETDONTHANG instance);
+    partial void DeleteCHITIETDONTHANG(CHITIETDONTHANG instance);
     partial void InsertDONDATHANG(DONDATHANG instance);
     partial void UpdateDONDATHANG(DONDATHANG instance);
     partial void DeleteDONDATHANG(DONDATHANG instance);
@@ -45,19 +45,19 @@ namespace WineStoreWeb.Models
     partial void InsertLOAIRUOU(LOAIRUOU instance);
     partial void UpdateLOAIRUOU(LOAIRUOU instance);
     partial void DeleteLOAIRUOU(LOAIRUOU instance);
-    partial void InsertNUOCNHAPKHAU(NUOCNHAPKHAU instance);
-    partial void UpdateNUOCNHAPKHAU(NUOCNHAPKHAU instance);
-    partial void DeleteNUOCNHAPKHAU(NUOCNHAPKHAU instance);
     partial void InsertNHASANXUAT(NHASANXUAT instance);
     partial void UpdateNHASANXUAT(NHASANXUAT instance);
     partial void DeleteNHASANXUAT(NHASANXUAT instance);
+    partial void InsertNUOCNHAPKHAU(NUOCNHAPKHAU instance);
+    partial void UpdateNUOCNHAPKHAU(NUOCNHAPKHAU instance);
+    partial void DeleteNUOCNHAPKHAU(NUOCNHAPKHAU instance);
     partial void InsertRUOU(RUOU instance);
     partial void UpdateRUOU(RUOU instance);
     partial void DeleteRUOU(RUOU instance);
     #endregion
 		
 		public dbQLBANRUOUDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QLBANRUOUConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["QLBANRUOUConnectionString2"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -86,19 +86,19 @@ namespace WineStoreWeb.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<CHITIETDONTHANG> CHITIETDONTHANGs
-		{
-			get
-			{
-				return this.GetTable<CHITIETDONTHANG>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TAIKHOANADMIN> TAIKHOANADMINs
 		{
 			get
 			{
 				return this.GetTable<TAIKHOANADMIN>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CHITIETDONTHANG> CHITIETDONTHANGs
+		{
+			get
+			{
+				return this.GetTable<CHITIETDONTHANG>();
 			}
 		}
 		
@@ -126,14 +126,6 @@ namespace WineStoreWeb.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<NUOCNHAPKHAU> NUOCNHAPKHAUs
-		{
-			get
-			{
-				return this.GetTable<NUOCNHAPKHAU>();
-			}
-		}
-		
 		public System.Data.Linq.Table<NHASANXUAT> NHASANXUATs
 		{
 			get
@@ -142,11 +134,129 @@ namespace WineStoreWeb.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<NUOCNHAPKHAU> NUOCNHAPKHAUs
+		{
+			get
+			{
+				return this.GetTable<NUOCNHAPKHAU>();
+			}
+		}
+		
 		public System.Data.Linq.Table<RUOU> RUOUs
 		{
 			get
 			{
 				return this.GetTable<RUOU>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TAIKHOANADMIN")]
+	public partial class TAIKHOANADMIN : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Tentaikhoan;
+		
+		private string _Matkhau;
+		
+		private string _HotenAdmin;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnTentaikhoanChanging(string value);
+    partial void OnTentaikhoanChanged();
+    partial void OnMatkhauChanging(string value);
+    partial void OnMatkhauChanged();
+    partial void OnHotenAdminChanging(string value);
+    partial void OnHotenAdminChanged();
+    #endregion
+		
+		public TAIKHOANADMIN()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tentaikhoan", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Tentaikhoan
+		{
+			get
+			{
+				return this._Tentaikhoan;
+			}
+			set
+			{
+				if ((this._Tentaikhoan != value))
+				{
+					this.OnTentaikhoanChanging(value);
+					this.SendPropertyChanging();
+					this._Tentaikhoan = value;
+					this.SendPropertyChanged("Tentaikhoan");
+					this.OnTentaikhoanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Matkhau", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Matkhau
+		{
+			get
+			{
+				return this._Matkhau;
+			}
+			set
+			{
+				if ((this._Matkhau != value))
+				{
+					this.OnMatkhauChanging(value);
+					this.SendPropertyChanging();
+					this._Matkhau = value;
+					this.SendPropertyChanged("Matkhau");
+					this.OnMatkhauChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HotenAdmin", DbType="NVarChar(100)")]
+		public string HotenAdmin
+		{
+			get
+			{
+				return this._HotenAdmin;
+			}
+			set
+			{
+				if ((this._HotenAdmin != value))
+				{
+					this.OnHotenAdminChanging(value);
+					this.SendPropertyChanging();
+					this._HotenAdmin = value;
+					this.SendPropertyChanged("HotenAdmin");
+					this.OnHotenAdminChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -342,116 +452,6 @@ namespace WineStoreWeb.Models
 						this._MaRuou = default(int);
 					}
 					this.SendPropertyChanged("RUOU");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TAIKHOANADMIN")]
-	public partial class TAIKHOANADMIN : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _Tentaikhoan;
-		
-		private string _Matkhau;
-		
-		private string _HotenAdmin;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnTentaikhoanChanging(string value);
-    partial void OnTentaikhoanChanged();
-    partial void OnMatkhauChanging(string value);
-    partial void OnMatkhauChanged();
-    partial void OnHotenAdminChanging(string value);
-    partial void OnHotenAdminChanged();
-    #endregion
-		
-		public TAIKHOANADMIN()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tentaikhoan", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Tentaikhoan
-		{
-			get
-			{
-				return this._Tentaikhoan;
-			}
-			set
-			{
-				if ((this._Tentaikhoan != value))
-				{
-					this.OnTentaikhoanChanging(value);
-					this.SendPropertyChanging();
-					this._Tentaikhoan = value;
-					this.SendPropertyChanged("Tentaikhoan");
-					this.OnTentaikhoanChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Matkhau", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Matkhau
-		{
-			get
-			{
-				return this._Matkhau;
-			}
-			set
-			{
-				if ((this._Matkhau != value))
-				{
-					this.OnMatkhauChanging(value);
-					this.SendPropertyChanging();
-					this._Matkhau = value;
-					this.SendPropertyChanged("Matkhau");
-					this.OnMatkhauChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HotenAdmin", DbType="NVarChar(100)")]
-		public string HotenAdmin
-		{
-			get
-			{
-				return this._HotenAdmin;
-			}
-			set
-			{
-				if ((this._HotenAdmin != value))
-				{
-					this.OnHotenAdminChanging(value);
-					this.SendPropertyChanging();
-					this._HotenAdmin = value;
-					this.SendPropertyChanged("HotenAdmin");
-					this.OnHotenAdminChanged();
 				}
 			}
 		}
@@ -1100,120 +1100,6 @@ namespace WineStoreWeb.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NUOCNHAPKHAU")]
-	public partial class NUOCNHAPKHAU : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MaNNK;
-		
-		private string _TenNNK;
-		
-		private EntitySet<RUOU> _RUOUs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaNNKChanging(int value);
-    partial void OnMaNNKChanged();
-    partial void OnTenNNKChanging(string value);
-    partial void OnTenNNKChanged();
-    #endregion
-		
-		public NUOCNHAPKHAU()
-		{
-			this._RUOUs = new EntitySet<RUOU>(new Action<RUOU>(this.attach_RUOUs), new Action<RUOU>(this.detach_RUOUs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNNK", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaNNK
-		{
-			get
-			{
-				return this._MaNNK;
-			}
-			set
-			{
-				if ((this._MaNNK != value))
-				{
-					this.OnMaNNKChanging(value);
-					this.SendPropertyChanging();
-					this._MaNNK = value;
-					this.SendPropertyChanged("MaNNK");
-					this.OnMaNNKChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenNNK", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string TenNNK
-		{
-			get
-			{
-				return this._TenNNK;
-			}
-			set
-			{
-				if ((this._TenNNK != value))
-				{
-					this.OnTenNNKChanging(value);
-					this.SendPropertyChanging();
-					this._TenNNK = value;
-					this.SendPropertyChanged("TenNNK");
-					this.OnTenNNKChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NUOCNHAPKHAU_RUOU", Storage="_RUOUs", ThisKey="MaNNK", OtherKey="MaNNK")]
-		public EntitySet<RUOU> RUOUs
-		{
-			get
-			{
-				return this._RUOUs;
-			}
-			set
-			{
-				this._RUOUs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_RUOUs(RUOU entity)
-		{
-			this.SendPropertyChanging();
-			entity.NUOCNHAPKHAU = this;
-		}
-		
-		private void detach_RUOUs(RUOU entity)
-		{
-			this.SendPropertyChanging();
-			entity.NUOCNHAPKHAU = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NHASANXUAT")]
 	public partial class NHASANXUAT : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1400,6 +1286,120 @@ namespace WineStoreWeb.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NUOCNHAPKHAU")]
+	public partial class NUOCNHAPKHAU : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MaNNK;
+		
+		private string _TenNNK;
+		
+		private EntitySet<RUOU> _RUOUs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaNNKChanging(int value);
+    partial void OnMaNNKChanged();
+    partial void OnTenNNKChanging(string value);
+    partial void OnTenNNKChanged();
+    #endregion
+		
+		public NUOCNHAPKHAU()
+		{
+			this._RUOUs = new EntitySet<RUOU>(new Action<RUOU>(this.attach_RUOUs), new Action<RUOU>(this.detach_RUOUs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNNK", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MaNNK
+		{
+			get
+			{
+				return this._MaNNK;
+			}
+			set
+			{
+				if ((this._MaNNK != value))
+				{
+					this.OnMaNNKChanging(value);
+					this.SendPropertyChanging();
+					this._MaNNK = value;
+					this.SendPropertyChanged("MaNNK");
+					this.OnMaNNKChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenNNK", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string TenNNK
+		{
+			get
+			{
+				return this._TenNNK;
+			}
+			set
+			{
+				if ((this._TenNNK != value))
+				{
+					this.OnTenNNKChanging(value);
+					this.SendPropertyChanging();
+					this._TenNNK = value;
+					this.SendPropertyChanged("TenNNK");
+					this.OnTenNNKChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NUOCNHAPKHAU_RUOU", Storage="_RUOUs", ThisKey="MaNNK", OtherKey="MaNNK")]
+		public EntitySet<RUOU> RUOUs
+		{
+			get
+			{
+				return this._RUOUs;
+			}
+			set
+			{
+				this._RUOUs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_RUOUs(RUOU entity)
+		{
+			this.SendPropertyChanging();
+			entity.NUOCNHAPKHAU = this;
+		}
+		
+		private void detach_RUOUs(RUOU entity)
+		{
+			this.SendPropertyChanging();
+			entity.NUOCNHAPKHAU = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RUOU")]
 	public partial class RUOU : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1432,9 +1432,9 @@ namespace WineStoreWeb.Models
 		
 		private EntityRef<LOAIRUOU> _LOAIRUOU;
 		
-		private EntityRef<NUOCNHAPKHAU> _NUOCNHAPKHAU;
-		
 		private EntityRef<NHASANXUAT> _NHASANXUAT;
+		
+		private EntityRef<NUOCNHAPKHAU> _NUOCNHAPKHAU;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1468,8 +1468,8 @@ namespace WineStoreWeb.Models
 		{
 			this._CHITIETDONTHANGs = new EntitySet<CHITIETDONTHANG>(new Action<CHITIETDONTHANG>(this.attach_CHITIETDONTHANGs), new Action<CHITIETDONTHANG>(this.detach_CHITIETDONTHANGs));
 			this._LOAIRUOU = default(EntityRef<LOAIRUOU>);
-			this._NUOCNHAPKHAU = default(EntityRef<NUOCNHAPKHAU>);
 			this._NHASANXUAT = default(EntityRef<NHASANXUAT>);
+			this._NUOCNHAPKHAU = default(EntityRef<NUOCNHAPKHAU>);
 			OnCreated();
 		}
 		
@@ -1752,40 +1752,6 @@ namespace WineStoreWeb.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NUOCNHAPKHAU_RUOU", Storage="_NUOCNHAPKHAU", ThisKey="MaNNK", OtherKey="MaNNK", IsForeignKey=true)]
-		public NUOCNHAPKHAU NUOCNHAPKHAU
-		{
-			get
-			{
-				return this._NUOCNHAPKHAU.Entity;
-			}
-			set
-			{
-				NUOCNHAPKHAU previousValue = this._NUOCNHAPKHAU.Entity;
-				if (((previousValue != value) 
-							|| (this._NUOCNHAPKHAU.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._NUOCNHAPKHAU.Entity = null;
-						previousValue.RUOUs.Remove(this);
-					}
-					this._NUOCNHAPKHAU.Entity = value;
-					if ((value != null))
-					{
-						value.RUOUs.Add(this);
-						this._MaNNK = value.MaNNK;
-					}
-					else
-					{
-						this._MaNNK = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("NUOCNHAPKHAU");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHASANXUAT_RUOU", Storage="_NHASANXUAT", ThisKey="MaNSX", OtherKey="MaNSX", IsForeignKey=true)]
 		public NHASANXUAT NHASANXUAT
 		{
@@ -1816,6 +1782,40 @@ namespace WineStoreWeb.Models
 						this._MaNSX = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("NHASANXUAT");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NUOCNHAPKHAU_RUOU", Storage="_NUOCNHAPKHAU", ThisKey="MaNNK", OtherKey="MaNNK", IsForeignKey=true)]
+		public NUOCNHAPKHAU NUOCNHAPKHAU
+		{
+			get
+			{
+				return this._NUOCNHAPKHAU.Entity;
+			}
+			set
+			{
+				NUOCNHAPKHAU previousValue = this._NUOCNHAPKHAU.Entity;
+				if (((previousValue != value) 
+							|| (this._NUOCNHAPKHAU.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NUOCNHAPKHAU.Entity = null;
+						previousValue.RUOUs.Remove(this);
+					}
+					this._NUOCNHAPKHAU.Entity = value;
+					if ((value != null))
+					{
+						value.RUOUs.Add(this);
+						this._MaNNK = value.MaNNK;
+					}
+					else
+					{
+						this._MaNNK = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("NUOCNHAPKHAU");
 				}
 			}
 		}

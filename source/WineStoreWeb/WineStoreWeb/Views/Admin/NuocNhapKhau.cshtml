@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WineStoreWeb.Models.NUOCNHAPKHAU>
+
+@{
+    ViewBag.Title = "NuocNhapKhau";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>NuocNhapKhau</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenNNK)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenNNK)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaNNK }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaNNK }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaNNK })
+        </td>
+    </tr>
+}
+
+</table>
