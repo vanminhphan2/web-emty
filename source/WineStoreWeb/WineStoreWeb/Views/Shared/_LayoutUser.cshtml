@@ -162,7 +162,7 @@
     </div>
      @*header*@ 
     
-    <div style="width:100%">
+   @*<div style="width:100%">
         @using (Html.BeginForm("search", "WineStore", FormMethod.Post))
         {
             <div>
@@ -170,7 +170,7 @@
                 <div style="width:40%;float:left">@Html.TextBox("searchtext", "")</div>
             </div>
         }
-    </div>
+    </div>*@
     <div>
         @RenderBody()
     </div>

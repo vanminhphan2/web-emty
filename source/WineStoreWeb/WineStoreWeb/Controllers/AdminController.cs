@@ -198,13 +198,11 @@ namespace WineStoreWeb.Controllers
                 }
                 ruou.AnhRuou = fileName;
                 
-               UpdateModel(ruou);
+                UpdateModel(ruou);
                 data.SubmitChanges();
             }
-
-            return RedirectToAction("Ruou");
+                return RedirectToAction("Ruou");
+            }
         }
-    }
-
     }
 }
